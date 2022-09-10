@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" manifest="./manifest.appcache">
+    <head>
+        <title>MGRS Finder</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+        <link rel="manifest" href="./site.webmanifest">
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/main.min.css">
+    </head>
+    <body class="text-dark bg-light">
+        <div class="topo-bg">
+            <div class="d-flex flex-column vh-100">
+                <main class="flex-fill">
+                    <div class="container">
+                        <div class="row justify-content-center header">
+                            <div class="col text-center pt-3">
+                                <div class="jumbotron m-0 shadow-sm">
+                                    <img src="./img/icon.png" height="100" width="100"/>
+                                    <h1 class="display-4">MGRS Finder</h1>
+                                    <p id="coordinatesHelp" class="lead text-muted pt-1">Enter Military Grid Reference System (MGRS) coordinates and get links to that location for various map apps.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <form id="coordinateForm" novalidate>
+                                    <div class="row pt-3">
+                                        <div class="col">
+                                            <input type="search" class="form-control deletable shadow-sm" id="mgrsCoordinates" aria-describedby="coordinatesHelp" placeholder="Enter Coordinates" oninput="forceUpperCase(this)" required>
+                                            <div class="invalid-feedback">Please provide a valid MGRS Coordinate.</div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-3">
+                                        <div class="col pr-2 d-none">
+                                            <button type="button" id="clearBtn" class="btn btn-danger w-100 shadow-sm">Clear</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit" id="submitBtn" class="btn btn-warning w-100 shadow-sm icon-color">Search</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center pt-3">
+                            <div class="col coordinate-container text-center d-none">
+                                <span id="gcsCoordinates"></span>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center pt-3">
+                            <div class="col link-container d-none">
+                                <div id="links" class="text-center"></div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <footer class="p-3 w-100 text-center">
+                    <hr>
+                    <cite>
+                        <small>
+                            <i>Tanner Cook<a href="#">&lt;tanner.v.cook@gmail.com&gt;</a>(9/8/2022)</i>
+                        </small>
+                    </cite>
+                </footer>
+            </div>
+        </div>
+
+        <script src="./js/jquery.slim.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/mgrs.min.js"></script>
+        <script src="./js/mgrsFinder.min.js"></script>
+
+    </body>
+</html>

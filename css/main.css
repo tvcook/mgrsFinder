@@ -1,0 +1,27 @@
+.icon-color {
+    color: #212529;
+    background-color: #f1c40f;
+    border-color: #f1c40f;
+}
+
+
+.topo-bg {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topo-bg::before {    
+      content: "";
+      background-image: url('../img/topo-bg.png');
+      background-size: cover;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      opacity: 0.25;
+}
