@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import Mgrs, { LatLon } from 'geodesy/mgrs.js';
+import LatLon_Utm from 'geodesy/mgrs.js';
 
 @Injectable({
   providedIn: 'root'
@@ -18,16 +19,16 @@ export class CoordinateService {
   }
 
   getLastCoordinates() {
-      return (this.coordinates.length > 0) ? this.coordinates[this.coordinates.length - 1].toUtm().toLatLon() : "";
+      return this.coordinates[this.coordinates.length - 1].toUtm().toLatLon();
       //.toString('dms', 2)
   }
 
-  getLat(index: number) {
-    return this.coordinates[index].toUtm().toLatLon().lat;
+  getLat() {
+    return this.getLastCoordinates().lat;
   }
 
-  getLon(index: number) {
-    return this.coordinates[index].toUtm().toLatLon().lon;
+  getLon() {
+    return this.getLastCoordinates().lon;
   }
 
   clearCoordinates() {
