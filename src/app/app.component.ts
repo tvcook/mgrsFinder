@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Mgrs from 'geodesy/mgrs.js';
 
 @Component({
   selector: 'app-root',

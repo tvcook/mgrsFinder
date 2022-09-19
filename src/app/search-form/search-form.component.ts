@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { CoordinateService } from '../coordinate.service';
+import Mgrs, { LatLon } from 'geodesy/mgrs.js';
 
 @Component({
   selector: 'app-search-form',
@@ -6,15 +8,21 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./search-form.component.scss']
 })
 export class SearchFormComponent implements OnInit {
-  input: string | undefined;
 
-  constructor() { }
+  constructor(
+    private coordinateService: CoordinateService
+  ) { }
 
   ngOnInit(): void {
   }
 
   handleSearch(input:string) {
-    console.log("search!", input);
+    try {
+      let mgrs = Mgrs.parse(input);
+      this.coordinateService.addToCoordinates(mgrs);
+    } catch (error) {
+      console.log("The MGRS Coordinate is invalid.", error);
+    }
   }
 
 }
